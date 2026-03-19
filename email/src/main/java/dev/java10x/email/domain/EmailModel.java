@@ -3,7 +3,6 @@ package dev.java10x.email.domain;
 import dev.java10x.email.enums.EmailStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -25,7 +24,7 @@ public class EmailModel {
     private String emailFrom;
     private String emailTo;
     private String emailSubject;
-    @Column(columnDefinition = "BODY")
+    @Column(columnDefinition = "TEXT")
     private String body;
     private LocalDateTime sendDateEmail;
     private EmailStatus statusEmail;

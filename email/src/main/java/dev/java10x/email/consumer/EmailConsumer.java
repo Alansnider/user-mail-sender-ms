@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailConsumer {
 
-    final EmailService emailService;
+    private final EmailService emailService;
 
     public EmailConsumer(EmailService emailService) {
         this.emailService = emailService;
@@ -19,7 +19,7 @@ public class EmailConsumer {
     @RabbitListener(queues = "email-queue")
     public void listenEmailQueue(@Payload EmailDto emailDto) {
        var emailModel = new EmailModel();
-        BeanUtils.copyProperties(emailDto, emailModel);
+        BeanUtils.copyProperties(emailDto, emailModel);//*BeanUtils = marcacao do lombok funcao dto
         emailService.sendEmail(emailModel);
     }
 
